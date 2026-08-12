@@ -1,0 +1,102 @@
+<!-- Encabezado y Navegación Global -->
+<header class="site-header">
+  <div class="header-container">
+    <a routerLink="/" class="brand-logo" aria-label="Inicio - San Martín Obispo">
+      <mat-icon aria-hidden="true">church</mat-icon>
+      <span>San Martín Obispo</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a mat-button routerLink="/" fragment="inicio">Inicio</a>
+      <a mat-button routerLink="/" fragment="historia">Historia</a>
+      <a mat-button routerLink="/" fragment="servicios">Servicios</a>
+      <a mat-button routerLink="/" fragment="contacto">Contacto</a>
+    </nav>
+
+    <button 
+      mat-icon-button 
+      (click)="themeService.toggleTheme()" 
+      [attr.aria-label]="themeService.isDarkMode() ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'">
+      <mat-icon>
+        {{ themeService.isDarkMode() ? 'light_mode' : 'dark_mode' }}
+      </mat-icon>
+    </button>
+
+    <div class="header-actions">
+      <a mat-flat-button color="primary" target="_blank" href="https://www.donoamiiglesia.es/es/donar.html/74f50590-ed3e-e611-80e8-005056b101e1">
+        <mat-icon aria-hidden="true">favorite</mat-icon>
+        Colaborar
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Contenido Principal Dinámico -->
+<main id="main-content" class="main-layout">
+  <!-- Héroe / Bienvenida -->
+  <section id="inicio" class="hero-section">
+    <div class="hero-content">
+      <span class="hero-badge">San Martín de Valdeiglesias</span>
+      <h1 class="hero-title">Bienvenidos a la Parroquia de San Martín Obispo</h1>
+      <p class="hero-description">
+        Un espacio de encuentro, oración y solidaridad. Acompañamos a nuestra comunidad
+        fortaleciendo la fe y el compromiso social.
+      </p>
+      <div class="hero-actions">
+        <a mat-flat-button color="primary" routerLink="/horarios">
+          Horarios de Misa
+        </a>
+        <a mat-stroked-button routerLink="/" fragment="historia">
+          Conocer más
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Características / Pilares -->
+  <section id="servicios" class="features-section" aria-labelledby="features-heading">
+    <h2 id="features-heading" class="section-title">Nuestra Comunidad</h2>
+    <p class="section-subtitle">Descubre las actividades y servicios a tu disposición</p>
+
+    <div class="features-grid">
+      @for (feature of features(); track feature.title) {
+        <mat-card appearance="outlined" class="feature-card">
+          <mat-card-header>
+            <div mat-card-avatar class="feature-icon-wrapper">
+              <mat-icon color="primary" aria-hidden="true">{{ feature.icon }}</mat-icon>
+            </div>
+            <mat-card-title>{{ feature.title }}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p>{{ feature.description }}</p>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <a mat-button [routerLink]="feature.link">Saber más</a>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  </section>
+
+  <!-- Punto de inyección para subrutas dinámicas -->
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Pie de Página Global -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <div class="brand-logo">
+        <mat-icon aria-hidden="true">church</mat-icon>
+        <span>Virgen de la Nueva</span>
+      </div>
+      <p>Unidos en la fe y al servicio de la comunidad.</p>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Virgen de la Nueva. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
