@@ -1,35 +1,33 @@
-<!-- Encabezado y Navegación Global -->
-<header class="site-header">
-  <div class="header-container">
-    <a routerLink="/" class="brand-logo" aria-label="Inicio - San Martín Obispo">
-      <mat-icon aria-hidden="true">church</mat-icon>
-      <span>San Martín Obispo</span>
-    </a>
+<header class="toolbar">
+  <mat-toolbar>
+    <button matIconButton>
+      <mat-icon>church</mat-icon>
+    </button>
+    <span>San Martín Obispo</span>
 
-    <nav class="nav-links" aria-label="Navegación principal">
+    <span class="spacer"></span>
+
+    <nav class="navigation">
       <a mat-button routerLink="/" fragment="inicio">Inicio</a>
       <a mat-button routerLink="/" fragment="historia">Historia</a>
       <a mat-button routerLink="/" fragment="servicios">Servicios</a>
       <a mat-button routerLink="/" fragment="contacto">Contacto</a>
     </nav>
 
-    <button 
-      mat-icon-button 
-      (click)="themeService.toggleTheme()" 
-      [attr.aria-label]="themeService.isDarkMode() ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'">
+    <span class="spacer"></span>
+
+    <button matIconButton (click)="themeService.toggleTheme()">
       <mat-icon>
         {{ themeService.isDarkMode() ? 'light_mode' : 'dark_mode' }}
       </mat-icon>
     </button>
 
-    <div class="header-actions">
-      <a mat-flat-button color="primary" target="_blank" href="https://www.donoamiiglesia.es/es/donar.html/74f50590-ed3e-e611-80e8-005056b101e1">
-        <mat-icon aria-hidden="true">favorite</mat-icon>
-        Colaborar
-      </a>
-    </div>
-  </div>
+    <button matButton="filled" extended target="_blank" href="https://www.donoamiiglesia.es/es/donar.html/74f50590-ed3e-e611-80e8-005056b101e1">
+      <mat-icon>favorite</mat-icon>Colaborar
+    </button>
+  </mat-toolbar>
 </header>
+
 
 <!-- Contenido Principal Dinámico -->
 <main id="main-content" class="main-layout">
@@ -37,7 +35,8 @@
   <section id="inicio" class="hero-section">
     <div class="hero-content">
       <span class="hero-badge">San Martín de Valdeiglesias</span>
-      <h1 class="hero-title">Bienvenidos a la Parroquia de San Martín Obispo</h1>
+      <h3 class="hero-title">Bienvenidos a la</h3>
+      <h1 class="hero-title"><i>Parroquia de San Martín Obispo</i></h1>
       <p class="hero-description">
         Un espacio de encuentro, oración y solidaridad. Acompañamos a nuestra comunidad
         fortaleciendo la fe y el compromiso social.
@@ -51,6 +50,11 @@
         </a>
       </div>
     </div>
+  </section>
+
+
+  <section id="historia" class="features-section">
+    <h1>Historia</h1>
   </section>
 
   <!-- Características / Pilares -->
@@ -78,6 +82,10 @@
         </mat-card>
       }
     </div>
+  </section>
+
+  <section id="contacto" class="features-section">
+    <h1>Contacto</h1>
   </section>
 
   <!-- Punto de inyección para subrutas dinámicas -->
