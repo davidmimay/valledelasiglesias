@@ -50,6 +50,10 @@
   padding: 5rem 1.5rem;
   background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
   text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('https://visitmadrid-files.s3.eu-west-1.amazonaws.com/files/2024-11/San%20Mart%C3%ADn%20de%20Valdeiglesias%20A019.jpg');
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 }
 
 .hero-content {
