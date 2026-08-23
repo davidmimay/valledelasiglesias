@@ -2,21 +2,34 @@ name: Deploy to Firebase Hosting on push
 on:
   push:
     branches:
-      - main  # Cambia por 'master' si tu rama principal se llama así
+      - main  # Cambia por 'master' si tu rama es master
+
+env:
+  ACTIONS_NODE_OPTION_WARNINGS: suppress
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm ci
-      - run: npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: Install Dependencies
+        working-directory: ./app # <--- Cambia por la carpeta de tu app (ej. ./app)
+        run: npm install
+
+      - name: Build Angular Project
+        working-directory: ./app # <--- Cambia por la carpeta de tu app (ej. ./app)
+        run: npm run build
+
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_TOKEN }}'
+          entryPoint: ./app # <--- Cambia por la carpeta de tu app (ej. ./app)
           channelId: live
-          projectId: valledelasiglesias  # Reemplaza por el ID de tu proyecto
+          projectId: valledelasiglesias # <--- Tu Project ID real de Firebase
