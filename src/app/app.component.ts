@@ -31,20 +31,26 @@ export class AppComponent {
   readonly features = signal<FeatureItem[]>([
     {
       icon: 'schedule',
-      title: 'Horarios de Culto',
-      description: 'Consulta los horarios de misas diarias, confesiones y celebraciones especiales.',
+      title: 'Misas Parroquia',
+      description: 'Laborales: 20:00.\nSábados y Vísperas: 20:00.\nDomingos y festivos: 9:00, 12:00, 20:00',
       link: '/horarios'
     },
     {
+      icon: 'church',
+      title: 'Adoración Eucarística',
+      description: 'Jueves 9:30 - 12:30.\n1º Sábado del mes 20:30 - 9:00',
+      link: '/grupos'
+    },
+    {
       icon: 'groups',
-      title: 'Grupos Parroquiales',
-      description: 'Encuentra tu lugar en nuestros grupos de jóvenes, catequesis y voluntariado.',
+      title: 'Santo Rosario',
+      description: 'Todos los días antes de la Misa',
       link: '/grupos'
     },
     {
       icon: 'handshake',
-      title: 'Acción Social',
-      description: 'Proyectos de ayuda y solidaridad con los más necesitados de la zona.',
+      title: 'Confesiones',
+      description: 'Media hora antes de la Misa y siempre que se solicite y pueda',
       link: '/accion-social'
     }
   ]);
